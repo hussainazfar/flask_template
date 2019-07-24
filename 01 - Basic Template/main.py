@@ -11,7 +11,7 @@ posts = [
 	{
 		'manufacturer': 'Toyota',
 		'model': 'Corolla GLi 2019',
-		'spec': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus magni reiciendis nesciunt maiores quia eaque rem maxime, voluptas mollitia non. Ut sed aspernatur delectus soluta perspiciatis repellat quod, commodi nemo.'
+		'spec': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus magni reiciendis nesciunt maiores quia eaque rem maxime, voluptas mollitia non. Ut sed aspernatur delectus soluta perspiciatis repellat quod, commodi nemo.',
 		'date_posted': 'May 05, 2019'
 	}
 ]
@@ -37,7 +37,7 @@ def contact():
 	#return "<h1>Contact us at: <i><strong>www.techsflex.net</strong></i>"
 
 	#Return webpage containing template for 'contact'
-	return render_template('home.html', title = 'Contact')	
+	return render_template('contact.html', title = 'Contact')	
 
 #Following lines identify procedure when script is run directly from command line instead of being imported
 if __name__ == '__main__':
