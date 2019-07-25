@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, flash, redirect
+from forms import RegistrationForm, LoginForm
 
 posts = [
 	{
@@ -37,7 +38,30 @@ def contact():
 	#return "<h1>Contact us at: <i><strong>www.techsflex.net</strong></i>"
 
 	#Return webpage containing template for 'contact'
-	return render_template('contact.html', title = 'Contact')	
+	return render_template('contact.html', title = 'Contact')
+
+@app.route("/login")
+def login():
+	#Create form instance
+	form = LoginForm()
+	#validate form entry i.e. similar ot database without implementing a database
+	if form.validate_on_submit():
+		if form.email.data == 'admin@admin.com' and form.password.data == 'password':
+			flash('Login successful!', 'success')
+			return redirect(url_for('home'))
+		else:
+			flash('Unable to login! Please check username and password', 'danger')
+	return render_template('login.html', title='Login')
+
+@app.route("/register")
+def register():
+	#Create form instance
+	form = RegistrationForm()
+	#validate form entry
+	if form.validate_on_submit():
+		flash(f'Account Created: {form.username.data}', 'success')
+		return redirect(url_for('home'))
+	return render_template('register.html', title='Sign Up')
 
 #Following lines identify procedure when script is run directly from command line instead of being imported
 if __name__ == '__main__':
